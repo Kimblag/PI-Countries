@@ -1,0 +1,16 @@
+
+
+:root{
+  --primary-color: #222831;
+  --primary-font-color: white;
+  --background--color: #EEEEEE;
+}
+
+
+body{
+  font-family: sans-serif, Arial, Helvetica;
+  background-color: var(--background--color);
+}
+button{
+  cursor: pointer;
+}

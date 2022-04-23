@@ -1,0 +1,91 @@
+.main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+}
+
+.main .CountryDetail_container{
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.main .CountryDetail_container .Container_row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main .CountryDetail_container .Container_row .Card{
+    flex: 1 1 21rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: #fff;
+    margin: 10px 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    padding: 10px 20px;
+
+}
+.main .CountryDetail_container .Container_row .Card .Card_title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.main .CountryDetail_container .Container_row .Card .Country_flag{
+    width: auto;
+    height: auto;
+    max-height: 200px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+.main .CountryDetail_container .Container_row .Card .Country_details{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    margin: auto;
+}
+
+.Country_activities{
+    position: relative;
+    max-width: 100%;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.Back_Button {
+    display: flex;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: rgb(234, 231, 231);
+   }
+   
+   .Back_Button > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+   }
+   
+   .Back_Button:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+   }
+   
+   .Back_Button:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+   }

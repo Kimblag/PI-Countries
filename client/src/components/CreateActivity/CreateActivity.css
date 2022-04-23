@@ -1,0 +1,22 @@
+.Form__Container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+.Form__Container .Form__Card{
+    flex: 1 1 21rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: #fff;
+    margin: 10px 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    padding: 10px 20px;
+    justify-content: space-around;
+}

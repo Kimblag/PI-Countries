@@ -1,0 +1,72 @@
+.Card__Container{
+    width: 100%;
+    max-width: 1200px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.Card__Container .card{
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    margin: 20px;
+    width: 300px;
+    height: 380px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 255, .2);
+    transition: all .2s;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.Card__Container .card:hover{
+    box-shadow: -12px 12px 2px -1px rgba(0, 0, 255, .2);
+}
+
+.Card__Container .card .flag{
+    width: 236px;
+    height: 142px;
+    margin-top: 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.Card__Container .card h4{
+    font-weight: 600;
+}
+
+.Card__Container .card p{
+    padding: 0 1rem;
+    font-size: 16px;
+    font-weight: 600;
+}
+.Card__Container .card .Card__button{
+    background-color: #fff;
+    border-radius: 24px;
+    border-style: none;
+    box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+    box-sizing: border-box;
+    color: #3c4043;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    letter-spacing: .25px;
+    line-height: normal;
+    padding: 11px 24px;
+    transition: background box-shadow 280ms ease;
+}
+
+.Card__Container .card .Card__button:hover{
+    background: #F6F9FE;
+    color: #174ea6;
+}
+
+.Card__Container .card .Card__button:active {
+    box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+    outline: none;
+    border: 2px solid #4285f4;
+   }
+   
