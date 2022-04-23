@@ -4,8 +4,14 @@ import App from "./App";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import store from "./redux/store/index";
+import dotenv from 'dotenv';
 import "./index.css";
 import "./global.css";
+import axios from "axios";
+
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>

@@ -114,14 +114,13 @@
     padding-right: 25px;
 }
 
-
 .rightSide .InputSearch{
     position: relative;
     width: 220px;
-    height: 30px;
+    height: 35px;
     border: none;
     border-radius: 28px;
-    font-size: 13px;
+    font-size: 15px;
     padding-left: 15px;
     color: black;
 }
