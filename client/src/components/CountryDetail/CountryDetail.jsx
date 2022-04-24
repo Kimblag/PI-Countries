@@ -18,7 +18,7 @@ const CountryDetail = ({ match }) => {
       dispatch(emptyCountryDetail());
     };
   }, [dispatch, id]);
-
+  
   return (
     <div datatest-id='detail'>
       <Navbar />
@@ -63,7 +63,7 @@ const CountryDetail = ({ match }) => {
                 <ul className="Country_activities">
                   <h2 style={{ marginTop: "10px" }}>Activities</h2>
                   {!country.Activities ? (
-                    <p>There is no activities yet</p>
+                    null
                   ) : (
                     country.Activities.map((activity) => (
                       <li
