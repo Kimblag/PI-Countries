@@ -15,8 +15,19 @@ const Pagination = ({
   }
 
   return (
+    <div className="pagination__container">
     <div className="pagination__buttons">
-      {pageNumbers && currentPage === 1
+
+      {currentPage !== 1 ? (
+        <button className="page-btn" onClick={() => paginate(currentPage - 1)}>Prev</button>
+      ) : null}
+      <p className="pagination__numberPage">{currentPage}</p>
+      {currentPage !== pageNumbers.length ? (
+        <button className="page-btn" onClick={() => paginate(currentPage + 1)}>Next</button>
+      ) : null}
+    </div>
+
+      {/* {pageNumbers && currentPage === 1
         ? pageNumbers
             .map((number) => {
               return (
@@ -40,7 +51,7 @@ const Pagination = ({
                 {number}
               </button>
             );
-          })}
+          })} */}
     </div>
   );
 };

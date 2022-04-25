@@ -29,8 +29,10 @@ const Home = () => {
   const filteredCountries = useSelector((state) => state.filteredCountries);
 
   const countries = useSelector((state) => state.countries);
+ 
   const activities = countries.map((country) => country.Activities)
   const activitiesNames = Array.from(new Set(activities.map(act => act.length > 0 ? act[0].name : "")));
+  
   // const activitiesNames = [];
   // activities
   //   .map((activity) => (activity.length > 0 ? activity[0].name : null))
@@ -55,7 +57,7 @@ const Home = () => {
 
   const countriesPerPage = currentPage === 1 ? 9 : 10;
   const indexOfLastCountry = currentPage * countriesPerPage; // 1 * 9 -> 9 countries that i've seen
-  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+  const indexOfFirstCountry = indexOfLastCountry - countriesPerPage; //9 - 9 -> 0 countries that i've seen
   const currentCountries = filteredCountries.slice(
     indexOfFirstCountry,
     indexOfLastCountry
@@ -137,6 +139,7 @@ const Home = () => {
         </button>
 
         <div className="Show_Filter" id={showFilters ? "hidden" : ""}>
+          
           {/* BY NAME */}
           <span className="filters">
             <Filter
