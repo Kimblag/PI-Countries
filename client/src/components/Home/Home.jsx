@@ -123,7 +123,9 @@ const Home = () => {
   return (
     <div>
       {/* Navbar */}
-      <Navbar />
+      <Navbar 
+        setCurrentPage={setCurrentPage}
+      />
 
       {/* filters */}
       <section className="Filter__Container">

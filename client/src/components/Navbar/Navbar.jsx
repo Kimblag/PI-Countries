@@ -5,7 +5,7 @@ import { getCountriesByName } from "../../redux/actions/index.js";
 
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({setCurrentPage}) => {
   const [showLinks, setShowLinks] = useState(false);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ const Navbar = () => {
     if (input) {
       dispatch(getCountriesByName(input));
       setInput("");
+      setCurrentPage(1);
     } else {
       alert("Please enter a country name");
     }
