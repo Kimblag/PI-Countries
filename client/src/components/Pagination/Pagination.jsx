@@ -25,7 +25,7 @@ const Pagination = ({
             Prev
           </button>
         ) : null}
-        <p className="pagination__numberPage">{currentPage}</p>
+        <p className="pagination__numberPage" style={{fontWeight: "600"}}>{currentPage}</p>
         {currentPage !== pageNumbers.length ? (
           <button
             className="page-btn"
