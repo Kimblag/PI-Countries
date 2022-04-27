@@ -32,7 +32,7 @@ const Home = () => {
   const activities = useSelector((state) => state.activities);
 
   // const activities = countries.map((country) => country.Activities)
-  // const activitiesNames = Array.from(new Set(activities.map(act => act.length > 0 ? act[0].name : "")));
+   const activitiesNames = Array.from(new Set(activities.map(act => act.name)));
 
   const [loading, setLoading] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
@@ -208,11 +208,11 @@ const Home = () => {
               <option value="all" disabled="disabled">
                 Sort by Activity
               </option>
-              {activities.length &&
-                activities.map((activity) => {
+              {activitiesNames.length &&
+                activitiesNames.map((activity) => {
                   return (
-                    <option value={activity.name} key={activity.name}>
-                      {activity.name}
+                    <option value={activity} key={activity}>
+                      {activity}
                     </option>
                   );
                 })}
