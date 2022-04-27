@@ -31,8 +31,8 @@ const SelectComponent = ({
         onChange={onChange}
         onBlur={onChange}
         validated={validation}
-        defaultValue={defaultValue}
-        // value={state.field}
+        // defaultValue={defaultValue}
+        value={state.field}
       >
         <option value="all" disabled={disabled}>
           ---
