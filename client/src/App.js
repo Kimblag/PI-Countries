@@ -1,6 +1,7 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import CountryDetail from "./components/CountryDetail/CountryDetail";
 import CreateActivity from "./components/CreateActivity/CreateActivity";
+import EditActivity from "./components/EditActivity/EditActivity";
 import Home from "./components/Home/Home";
 import LandingPage from "./components/LandingPage/LandingPage";
 
@@ -14,6 +15,11 @@ function App() {
         exact
         path="/activity/create-activity"
         component={CreateActivity}
+      />
+      <Route
+        exact
+        path="/activity/edit-activity/:id"
+        component={EditActivity}
       />
     </BrowserRouter>
   );

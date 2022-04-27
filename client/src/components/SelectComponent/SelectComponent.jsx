@@ -21,6 +21,7 @@ const SelectComponent = ({
     else setState({ ...state, field: "", validated: "false" });
   };
 
+  console.log(defaultValue)
   return (
     <div>
       <Label htmlFor="">{titleLabel}</Label>
@@ -30,14 +31,15 @@ const SelectComponent = ({
         onChange={onChange}
         onBlur={onChange}
         validated={validation}
-        defaultValue={defaultValue}
+        // defaultValue={defaultValue}
+        value={state.field}
       >
         <option value="all" disabled={disabled}>
           ---
         </option>
         {mockData.map((mockData) => (
           <option value={mockData.value} key={mockData.value}>
-            {mockData.label}
+            {mockData.value}
           </option>
         ))}
       </Select>

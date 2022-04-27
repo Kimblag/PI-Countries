@@ -24,7 +24,7 @@ export const Filter = ({
 
         {mockData.map((mockData) => (
           <option value={mockData.value} key={mockData.value}>
-            {mockData.label}
+            {mockData.value}
           </option>
         ))}
       </select>

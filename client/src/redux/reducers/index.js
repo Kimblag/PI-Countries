@@ -10,12 +10,18 @@ import {
   FILTER_BY_POPULATION,
   CREATE_ACTIVITY,
   FILTER_BY_DIFFICULTY,
+  DELETE_ACTIVITY,
+  UPDATE_ACTIVITY,
+  GET_ALL_ACTIVITIES,
+  GET_ACTIVITY_DETAILS
 } from "../constants/constants";
 
 const initialState = {
   filteredCountries: [],
   countries: [],
   countryDetails: {},
+  activities: [],
+  activityDetail: {},
 };
 
 function rootReducer(state = initialState, { type, payload }) {
@@ -43,16 +49,15 @@ function rootReducer(state = initialState, { type, payload }) {
       };
     case FILTER_BY_DIFFICULTY:
       let dificultad;
-      console.log("1: ", dificultad);
       if (payload === "all") dificultad = state.countries;
-      else console.log("2: ", dificultad);
-      dificultad = state.countries.filter(
-        (country) =>
-          country.Activities &&
-          country.Activities.filter(
-            (activity) => activity.difficulty === payload
-          ).length > 0
-      );
+      else
+        dificultad = state.countries.filter(
+          (country) =>
+            country.Activities &&
+            country.Activities.filter(
+              (activity) => activity.difficulty === payload
+            ).length > 0
+        );
       console.log("3: ", dificultad);
       return {
         ...state,
@@ -136,7 +141,25 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         filteredCountries: sortPopulation,
       };
+      case GET_ALL_ACTIVITIES:
+        return{
+          ...state,
+          activities: payload
+        }
+        case GET_ACTIVITY_DETAILS:
+          return {
+            ...state,
+            activityDetail: payload
+          }
     case CREATE_ACTIVITY:
+      return {
+        ...state,
+      };
+    case DELETE_ACTIVITY:
+      return {
+        ...state,
+      };
+    case UPDATE_ACTIVITY:
       return {
         ...state,
       };

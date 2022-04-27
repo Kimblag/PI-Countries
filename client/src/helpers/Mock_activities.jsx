@@ -24,10 +24,10 @@ export const difficulty = [
 ];
 
 export const season = [
-  { value: "Spring", label: "Spring" },
-  { value: "Summer", label: "Summer" },
-  { value: "Autumn", label: "Autumn" },
-  { value: "Winter", label: "Winter" },
+  { value: "Spring"},
+  { value: "Summer"},
+  { value: "Autumn"},
+  { value: "Winter" },
 ];
 
 export const continents = [

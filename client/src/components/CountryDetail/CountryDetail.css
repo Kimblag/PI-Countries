@@ -58,6 +58,25 @@
     list-style: none;
 }
 
+.btn-delete{
+    background: none;
+    background-color: red;
+    color:rgb(234, 231, 231);
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btn-edit{
+    background: none;
+    background-color: rgb(124, 124, 177);
+    color:rgb(234, 231, 231);
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 .Back_Button {
     display: flex;
     height: 3em;

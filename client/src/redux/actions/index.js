@@ -11,7 +11,11 @@ import {
   FILTER_BY_SEASON,
   FILTER_BY_ACTIVITY,
   CREATE_ACTIVITY,
-  FILTER_BY_DIFFICULTY
+  FILTER_BY_DIFFICULTY,
+  DELETE_ACTIVITY,
+  UPDATE_ACTIVITY,
+  GET_ALL_ACTIVITIES,
+  GET_ACTIVITY_DETAILS,
 } from "../constants/constants";
 
 export function getAllCountries() {
@@ -72,12 +76,12 @@ export const filterByName = (payload) => {
   };
 };
 
-export const filterByDifficulty = (payload) =>{
-  return{
+export const filterByDifficulty = (payload) => {
+  return {
     type: FILTER_BY_DIFFICULTY,
     payload: parseInt(payload),
-  }
-}
+  };
+};
 
 export const filterByPopulation = (payload) => {
   return {
@@ -106,6 +110,37 @@ export const filterByActivity = (payload) => {
   };
 };
 
+export const getAllActivities = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios
+        .get(`/activity/activities`);
+      dispatch({
+        type: GET_ALL_ACTIVITIES,
+        payload: response.data,
+      });
+    } catch (error) {
+      return console.error(error);
+    }
+  };
+}
+
+export const getActivityDetails = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`/activity/activities/${id}`);
+      dispatch({
+        type: GET_ACTIVITY_DETAILS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+
+
 export const createActivity = (payload) => {
   return function () {
     const response = axios.post(`/activity`, payload);
@@ -117,8 +152,42 @@ export const createActivity = (payload) => {
         };
       })
       .catch((error) => {
-        alert(error, 'Activity not created');
-        console.error(error)
+        alert(error, "Activity not created");
+        console.error(error);
       });
+  };
+};
+
+export const updateActivity = ({id, payload}) => {
+  console.log("payload", id);
+  return function (dispatch) {
+    axios
+      .put(`/activity/${id}`, payload)
+      .then((response) => {
+        console.log(response.data, "updated");
+        dispatch({
+          type: UPDATE_ACTIVITY,
+          payload: response.data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+//https://www.youtube.com/watch?v=hXpYQqykORU
+
+export const deleteActivity = (payload) => {
+  console.log("payload", payload.id, payload.activity);
+  return function (dispatch) {
+    axios
+      .delete(`/activity/${payload.activity}`)
+      .then((response) => {
+        console.log(response.data, "deleted");
+        dispatch({
+          type: DELETE_ACTIVITY,
+        });
+        dispatch(getCountryDetails(payload.id));
+      })
+      .catch((error) => console.log(error));
   };
 };

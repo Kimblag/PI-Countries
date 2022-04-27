@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { emptyCountryDetail, getCountryDetails } from "../../redux/actions";
+import { Link, useHistory } from "react-router-dom";
+import {
+  deleteActivity,
+  emptyCountryDetail,
+  getCountryDetails,
+} from "../../redux/actions";
 
 import Navbar from "../Navbar/Navbar";
 
@@ -12,15 +16,23 @@ const CountryDetail = ({ match }) => {
   const dispatch = useDispatch();
   const country = useSelector((state) => state.countryDetails);
 
+  const history = useHistory();
+
   useEffect(() => {
     dispatch(getCountryDetails(id));
     return function cleanUp() {
       dispatch(emptyCountryDetail());
     };
   }, [dispatch, id]);
-  
+
+  const handleDelete = (activity) => {
+    if (window.confirm("Are you sure you want to delete this activity?")) {
+      dispatch(deleteActivity({ activity, id }));
+    }
+  };
+
   return (
-    <div datatest-id='detail'>
+    <div datatest-id="detail">
       <Navbar />
       <main className="main">
         <div className="CountryDetail_container">
@@ -62,28 +74,39 @@ const CountryDetail = ({ match }) => {
               >
                 <ul className="Country_activities">
                   <h2 style={{ marginTop: "10px" }}>Activities</h2>
-                  {!country.Activities ? (
-                    null
-                  ) : (
-                    country.Activities.map((activity) => (
-                      <li
-                        key={activity.id}
-                        style={{ borderTop: "1px solid gray" }}
-                      >
-                        <h3>{activity.name}</h3>
-                        <p>
-                          <i>Season: </i>
-                          {activity.season}
-                        </p>
-                        <p>
-                          <i>Difficulty: </i> {activity.difficulty}
-                        </p>
-                        <p>
-                          <i>Duration: </i> {activity.duration}
-                        </p>
-                      </li>
-                    ))
-                  )}
+                  {!country.Activities
+                    ? null
+                    : country.Activities.map((activity) => (
+                        <li
+                          key={activity.id}
+                          style={{ borderTop: "1px solid gray" }}
+                        >
+                          <h3>{activity.name}</h3>
+                          <p>
+                            <i>Season: </i>
+                            {activity.season}
+                          </p>
+                          <p>
+                            <i>Difficulty: </i> {activity.difficulty}
+                          </p>
+                          <p>
+                            <i>Duration: </i> {activity.duration}
+                          </p>
+                          <button className="btn-delete" onClick={() => handleDelete(activity.id)}>
+                            Delete
+                          </button>{" "}
+                          <button
+                          className="btn-edit"
+                            onClick={() =>
+                              history.push(
+                                `/activity/edit-activity/${activity.id}`
+                              )
+                            }
+                          >
+                            Edit
+                          </button>
+                        </li>
+                      ))}
                 </ul>
               </div>
               <Link to="/home" style={{ textDecoration: "none" }}>

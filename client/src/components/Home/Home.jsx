@@ -8,6 +8,7 @@ import {
   filterBySeason,
   filterByActivity,
   filterByDifficulty,
+  getAllActivities,
 } from "../../redux/actions";
 import {
   season,
@@ -28,20 +29,10 @@ const Home = () => {
   const dispatch = useDispatch();
   const filteredCountries = useSelector((state) => state.filteredCountries);
 
-  const countries = useSelector((state) => state.countries);
- 
-  const activities = countries.map((country) => country.Activities)
-  const activitiesNames = Array.from(new Set(activities.map(act => act.length > 0 ? act[0].name : "")));
-  
-  // const activitiesNames = [];
-  // activities
-  //   .map((activity) => (activity.length > 0 ? activity[0].name : null))
-  //   .forEach((name) =>
-  //     !activitiesNames.includes(name) && name !== null
-  //       ? activitiesNames.push(name)
-  //       : null
-  //   );
+  const activities = useSelector((state) => state.activities);
 
+  // const activities = countries.map((country) => country.Activities)
+  // const activitiesNames = Array.from(new Set(activities.map(act => act.length > 0 ? act[0].name : "")));
 
   const [loading, setLoading] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
@@ -49,6 +40,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     dispatch(getAllCountries());
+    dispatch(getAllActivities());
     setLoading(false);
   }, [dispatch]);
 
@@ -123,9 +115,7 @@ const Home = () => {
   return (
     <div>
       {/* Navbar */}
-      <Navbar 
-        setCurrentPage={setCurrentPage}
-      />
+      <Navbar setCurrentPage={setCurrentPage} />
 
       {/* filters */}
       <section className="Filter__Container">
@@ -141,7 +131,6 @@ const Home = () => {
         </button>
 
         <div className="Show_Filter" id={showFilters ? "hidden" : ""}>
-          
           {/* BY NAME */}
           <span className="filters">
             <Filter
@@ -219,13 +208,14 @@ const Home = () => {
               <option value="all" disabled="disabled">
                 Sort by Activity
               </option>
-              {activitiesNames.map((activity) =>
-                activity.length > 0 ? (
-                  <option value={activity} key={activity}>
-                    {activity}
-                  </option>
-                ) : null
-              )}
+              {activities.length &&
+                activities.map((activity) => {
+                  return (
+                    <option value={activity.name} key={activity.name}>
+                      {activity.name}
+                    </option>
+                  );
+                })}
             </select>
           </span>
 
@@ -239,7 +229,9 @@ const Home = () => {
       {filteredCountries.length > 0 ? (
         <Cards countries={currentCountries} loading={loading} />
       ) : (
-        <Cards loading={true} />
+        <div className="No_Countries">
+          <h1>No Countries Found</h1>
+        </div>
       )}
 
       {/* Pagination */}
