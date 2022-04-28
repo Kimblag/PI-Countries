@@ -159,12 +159,10 @@ export const createActivity = (payload) => {
 };
 
 export const updateActivity = ({id, payload}) => {
-  console.log("payload", id);
   return function (dispatch) {
     axios
       .put(`/activity/${id}`, payload)
       .then((response) => {
-        console.log(response.data, "updated");
         dispatch({
           type: UPDATE_ACTIVITY,
           payload: response.data,
@@ -174,10 +172,8 @@ export const updateActivity = ({id, payload}) => {
   };
 };
 
-//https://www.youtube.com/watch?v=hXpYQqykORU
 
 export const deleteActivity = (payload) => {
-  console.log("payload", payload.id, payload.activity);
   return function (dispatch) {
     axios
       .delete(`/activity/${payload.activity}`)

@@ -58,7 +58,6 @@ function rootReducer(state = initialState, { type, payload }) {
               (activity) => activity.difficulty === payload
             ).length > 0
         );
-      console.log("3: ", dificultad);
       return {
         ...state,
         filteredCountries: dificultad,

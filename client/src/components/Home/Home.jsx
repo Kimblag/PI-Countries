@@ -32,7 +32,7 @@ const Home = () => {
   const activities = useSelector((state) => state.activities);
 
   // const activities = countries.map((country) => country.Activities)
-   const activitiesNames = Array.from(new Set(activities.map(act => act.name)));
+  const activitiesNames = Array.from(new Set(activities.map(act => act.name)));
 
   const [loading, setLoading] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
@@ -56,6 +56,7 @@ const Home = () => {
   );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
   //* Handlers
   const handleFilterByContinent = (event) => {
@@ -131,6 +132,7 @@ const Home = () => {
         </button>
 
         <div className="Show_Filter" id={showFilters ? "hidden" : ""}>
+          
           {/* BY NAME */}
           <span className="filters">
             <Filter

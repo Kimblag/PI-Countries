@@ -21,7 +21,6 @@ const SelectComponent = ({
     else setState({ ...state, field: "", validated: "false" });
   };
 
-  console.log(defaultValue)
   return (
     <div>
       <Label htmlFor="">{titleLabel}</Label>
