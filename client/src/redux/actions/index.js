@@ -16,6 +16,7 @@ import {
   UPDATE_ACTIVITY,
   GET_ALL_ACTIVITIES,
   GET_ACTIVITY_DETAILS,
+  FILTER_BY_AREA
 } from "../constants/constants";
 
 export function getAllCountries() {
@@ -109,6 +110,13 @@ export const filterByActivity = (payload) => {
     payload,
   };
 };
+
+export const filterByArea = (payload) => {
+  return{
+    type: FILTER_BY_AREA,
+    payload,
+  }
+}
 
 export const getAllActivities = () => {
   return async (dispatch) => {

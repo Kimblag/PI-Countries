@@ -25,9 +25,11 @@ const Pagination = ({
             Prev
           </button>
         ) : null}
-        
-        <p className="pagination__numberPage" style={{fontWeight: "600"}}>{currentPage}</p>
-        
+
+        <p className="pagination__numberPage" style={{ fontWeight: "600" }}>
+          {currentPage}
+        </p>
+
         {currentPage !== pageNumbers.length ? (
           <button
             className="page-btn"
@@ -37,32 +39,6 @@ const Pagination = ({
           </button>
         ) : null}
       </div>
-
-      {/* {pageNumbers && currentPage === 1
-        ? pageNumbers
-            .map((number) => {
-              return (
-                <button
-                  className="page-btn"
-                  key={number}
-                  onClick={() => paginate(number)}
-                >
-                  {number}
-                </button>
-              );
-            })
-            .slice(0, 25)
-        : pageNumbers.map((number) => {
-            return (
-              <button
-                className="page-btn"
-                key={number}
-                onClick={() => paginate(number)}
-              >
-                {number}
-              </button>
-            );
-          })} */}
     </div>
   );
 };

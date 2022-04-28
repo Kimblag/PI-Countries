@@ -13,7 +13,8 @@ import {
   DELETE_ACTIVITY,
   UPDATE_ACTIVITY,
   GET_ALL_ACTIVITIES,
-  GET_ACTIVITY_DETAILS
+  GET_ACTIVITY_DETAILS,
+  FILTER_BY_AREA,
 } from "../constants/constants";
 
 const initialState = {
@@ -140,16 +141,28 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         filteredCountries: sortPopulation,
       };
-      case GET_ALL_ACTIVITIES:
-        return{
-          ...state,
-          activities: payload
-        }
-        case GET_ACTIVITY_DETAILS:
-          return {
-            ...state,
-            activityDetail: payload
-          }
+    case FILTER_BY_AREA:
+      let sortArea;
+      if (payload === "all") sortArea = state.countries;
+      else
+        sortArea =
+          payload === "ASC"
+            ? state.filteredCountries.sort((a, b) => a.area - b.area)
+            : state.filteredCountries.sort((a, b) => b.area - a.area)
+            return {
+              ...state, 
+              filteredCountries: sortArea
+            }
+    case GET_ALL_ACTIVITIES:
+      return {
+        ...state,
+        activities: payload,
+      };
+    case GET_ACTIVITY_DETAILS:
+      return {
+        ...state,
+        activityDetail: payload,
+      };
     case CREATE_ACTIVITY:
       return {
         ...state,

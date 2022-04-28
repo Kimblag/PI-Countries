@@ -9,6 +9,7 @@ import {
   filterByActivity,
   filterByDifficulty,
   getAllActivities,
+  filterByArea,
 } from "../../redux/actions";
 import {
   season,
@@ -16,6 +17,7 @@ import {
   difficulty,
   countryName,
   populationSort,
+  areaSort,
 } from "../../helpers/Mock_activities";
 
 import Cards from "../Cards/Cards";
@@ -83,6 +85,14 @@ const Home = () => {
     setCurrentPage(1);
   };
 
+    // eslint-disable-next-line
+  const [area, setArea] = useState("")
+  const handlerFilterArea = (event) => {
+    dispatch(filterByArea(event.target.value));
+    setArea(event.target.value);
+    setCurrentPage(1)
+  }
+
   const handleFilterBySeason = (event) => {
     dispatch(filterBySeason(event.target.value));
     setCurrentPage(1);
@@ -111,6 +121,7 @@ const Home = () => {
     document.getElementById("byActivity").value = "all";
     document.getElementById("byPopulation").value = "all";
     document.getElementById("byDifficulty").value = "all";
+    document.getElementById("byArea").value = "all";
   };
 
   return (
@@ -156,6 +167,19 @@ const Home = () => {
               onChange={(e) => handleFilterByPopulation(e)}
               optionTitle="Sort by Population"
               mockData={populationSort}
+            />
+          </span>
+
+           {/* BY AREA */}
+           <span className="filters">
+            <Filter
+              className="Home__select"
+              id="byArea"
+              name="sortArea"
+              defaultValue={"all"}
+              onChange={(e) => handlerFilterArea(e)}
+              optionTitle="Sort by Area"
+              mockData={areaSort}
             />
           </span>
 

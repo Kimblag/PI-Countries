@@ -47,3 +47,8 @@ export const populationSort = [
   { value: "ASC", label: "Population (Asc)" },
   { value: "DES", label: "Population (Desc)" },
 ];
+
+export const areaSort = [
+  { value: "ASC", label: "Area (Asc)" },
+  { value: "DES", label: "Area (Desc)" },
+];

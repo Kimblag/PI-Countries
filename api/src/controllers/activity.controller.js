@@ -44,9 +44,6 @@ const updateActivity = (req, res, next) => {
   const { name, difficulty, duration, season } = req.body;
 
   parseInt(difficulty);
-  parseInt(duration);
-  
-  name.toLowerCase();
 
   const activityDetail = Activity.findByPk(id);
 
