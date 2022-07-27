@@ -4,7 +4,7 @@
 <hr />
 
 # Individual Project - Henry Countries
-<link href="https://countries-main-app.vercel.app/" target="blank" />
+<a href="https://countries-main-app.vercel.app/" target="blank"> Go to App Deploy </a>
 
 <p align="center">
   <img height="500" src="./countries.png" />
